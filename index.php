@@ -5,10 +5,12 @@ $numbers = [1, 3, 5, 7, 9, 2, 4, 12, 14, 92, 33, 48, 66, 208, 10];
 $symbols = ['@', '_', '&', '#', '*', '-', '/',];
 
 function GeneratePassword($passLength, $letters, $numbers, $symbols){
-    $arrMerged = array_merge($letters, $numbers, $symbols);
-    $arrShuffled = shuffle($arrMerged);
-    $arrToString = implode($arrShuffled);
-    return substr($arrToString, $passLength); 
+    if($passLength){
+        $arrMerged = array_merge($letters, $numbers, $symbols);
+        shuffle($arrMerged);
+        $arrToString = implode($arrMerged);
+        return substr($arrToString, $passLength); 
+    };
 }
 ?>
 
@@ -41,12 +43,10 @@ function GeneratePassword($passLength, $letters, $numbers, $symbols){
                 <div class="col-auto">
                     <input type="number" id="pass_number" class="form-control" name="pass_number" min="1" max="15">
                 </div>
-                <!-- <div class="col-12">
-                    <span id="passwordHelpInline" class="form-text">
-                    - Must contain max 8 characters
-                    </span>
-                </div> -->
             </div>
+            <button type="submit" class="btn btn-primary mt-3"> 
+                Create</button>
+            <button type="reset" class="btn btn-success mt-3"> Reset</button>
         </form>
     </div>
 </body>
