@@ -9,7 +9,7 @@
             $arrMerged = array_merge($letters, $numbers, $symbols);
             shuffle($arrMerged);
             $arrToString = implode($arrMerged);
-            return substr($arrToString, $passLength); 
-        };
+            return substr($arrToString, 0, $passLength); 
+        }
+
     }
-?>

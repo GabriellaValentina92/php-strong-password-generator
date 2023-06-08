@@ -17,11 +17,6 @@
 </head>
 <body>
     <div class="container" style="width: 1000px; margin: 10px auto;">
-        <div class="alert alert-info" role="alert">
-            SUPER-PASSWORD: <?= GeneratePassword($passLength, $letters, $numbers, $symbols) ?>
-        </div>
-    </div>
-    <div class="container" style="width: 1000px; margin: 10px auto;">
         <h1> Generatore di Password a Prova di Hacker</h1>
         <form action="" method="get" class="mt-5">
             <div class="row g-3 align-items-center">
@@ -32,10 +27,12 @@
                     <input type="number" id="pass_number" class="form-control" name="pass_number" min="1" max="15">
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary mt-3"> 
-                Create</button>
-            <button type="reset" class="btn btn-success mt-3"> Reset</button>
         </form>
+    </div>
+    <div class="container mt-4" style="width: 1000px; margin: 0 auto;">
+        <div class="alert alert-info" role="alert">
+            SUPER-PASSWORD: <?= GeneratePassword($passLength, $letters, $numbers, $symbols) ?>
+        </div>
     </div>
 </body>
 </html>
