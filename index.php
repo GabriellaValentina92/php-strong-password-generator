@@ -1,5 +1,19 @@
+<?php 
+$passLength = $_GET['pass_number'];
+$letters = range('a', 'z');
+$numbers = [1, 3, 5, 7, 9, 2, 4, 12, 14, 92, 33, 48, 66, 208, 10];
+$symbols = ['@', '_', '&', '#', '*', '-', '/',];
+
+function GeneratePassword($passLength, $letters, $numbers, $symbols){
+    $arrMerged = array_merge($letters, $numbers, $symbols);
+    $arrShuffled = shuffle($arrMerged);
+    $arrToString = implode($arrShuffled);
+    return substr($arrToString, $passLength); 
+}
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,18 +27,23 @@
 </head>
 <body>
     <div class="container" style="width: 1000px; margin: 10px auto;">
+        <div class="alert alert-info" role="alert">
+            SUPER-PASSWORD: <?= GeneratePassword($passLength, $letters, $numbers, $symbols) ?>
+        </div>
+    </div>
+    <div class="container" style="width: 1000px; margin: 10px auto;">
         <h1> Generatore di Password a Prova di Hacker</h1>
         <form action="" method="get" class="mt-5">
             <div class="row g-3 align-items-center">
                 <div class="col-auto">
-                    <label for="password" class="col-form-label">Password</label>
+                    <label for="pass_number" class="col-form-label"> Lunghezza Password</label>
                 </div>
                 <div class="col-auto">
-                    <input type="password" id="password" class="form-control" name="password">
+                    <input type="number" id="pass_number" class="form-control" name="pass_number" min="1" max="15">
                 </div>
-                <!-- <div class="col-auto">
+                <!-- <div class="col-12">
                     <span id="passwordHelpInline" class="form-text">
-                    Must be 8-20 characters long.
+                    - Must contain max 8 characters
                     </span>
                 </div> -->
             </div>
